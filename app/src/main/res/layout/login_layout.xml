@@ -7,11 +7,21 @@
 
     <ImageView
         android:id="@+id/imgLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         android:src="@tools:sample/avatars"
         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtMasuk"
+        android:text="MASUK"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/imgLogo"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:layout_marginTop="15dp"/>
 
     <EditText
         android:id="@+id/etEmail"
@@ -21,7 +31,7 @@
         android:inputType="textEmailAddress"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:layout_below="@id/imgLogo"
+        android:layout_below="@id/txtMasuk"
         android:hint="E-mail"
         />
 
@@ -43,7 +53,7 @@
         android:layout_below="@id/etPassword"
         android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
-        android:text="LOGIN"
+        android:text="MASUK"
         app:cornerRadius="55dp" />
 
     <TextView
