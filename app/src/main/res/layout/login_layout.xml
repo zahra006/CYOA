@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ImageView
+        android:contentDescription="Logo"
         android:id="@+id/imgLogo"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -28,7 +28,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txtLayoutEmail"
+        android:id="@+id/txtLayoutEmailLogin"
         android:layout_below="@id/txtMasuk"
         android:layout_centerHorizontal="true">
 
@@ -36,18 +36,17 @@
             android:id="@+id/etEmailLogin"
             android:layout_width="270dp"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
             android:layout_below="@id/txtMasuk"
+            android:background="@android:color/transparent"
             android:hint="E-mail"
-            android:background="@android:color/transparent">
-        </com.google.android.material.textfield.TextInputEditText>
+            android:inputType="textEmailAddress"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txtLayoutPassword"
-        android:layout_below="@id/txtLayoutEmail"
+        android:id="@+id/txtLayoutPasswordLogin"
+        android:layout_below="@id/txtLayoutEmailLogin"
         android:layout_centerHorizontal="true"
         app:passwordToggleEnabled="true">
 
@@ -65,7 +64,7 @@
         android:id="@+id/btnLogin"
         android:layout_width="270dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtLayoutPassword"
+        android:layout_below="@id/txtLayoutPasswordLogin"
         android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
         android:text="MASUK"
@@ -83,16 +82,14 @@
             android:id="@+id/txtTidakPunya"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:text="Tidak punya akun?"
             app:cornerRadius="55dp"
-            android:layout_marginRight="6dp"/>
+            android:layout_marginEnd="6dp"/>
 
         <TextView
             android:id="@+id/txtRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:text="Daftar"
             app:cornerRadius="55dp"
             android:textColor="@color/navy_500"/>

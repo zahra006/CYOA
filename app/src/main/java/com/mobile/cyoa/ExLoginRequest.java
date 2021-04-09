@@ -1,10 +1,10 @@
 package com.mobile.cyoa;
 
-public class LoginRequest {
+public class ExLoginRequest {
     private String email;
     private String password;
 
-    public LoginRequest(String email, String password){
+    public ExLoginRequest(String email, String password){
         this.email=email;
         this.password=password;
     }

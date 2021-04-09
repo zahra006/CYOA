@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,7 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class LoginActivity extends AppCompatActivity {
+public class ExLoginActivity extends AppCompatActivity {
 
     EditText etEmail,etPassword;
     Button btnLogin;
@@ -26,15 +25,15 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        etEmail = (EditText) findViewById(R.id.etEmailLogin);
-        etPassword = (EditText) findViewById(R.id.etPasswordLogin);
-        btnLogin = (Button) findViewById(R.id.btnLogin);
-        txtRegister = (TextView) findViewById(R.id.txtRegister);
+        etEmail = findViewById(R.id.etEmailLogin);
+        etPassword = findViewById(R.id.etPasswordLogin);
+        btnLogin = findViewById(R.id.btnLogin);
+        txtRegister = findViewById(R.id.txtRegister);
 
         txtRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(ExLoginActivity.this, ExRegisterActivity.class);
                 startActivity(intent);
             }
         });
