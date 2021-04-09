@@ -21,33 +21,8 @@ public class SplashActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                isFirstTime();
-            }
-
-            private void isFirstTime() {
-                //check if app is running for the first time in forever
-                //save the value to the SharedPreferences
-                SharedPreferences preferences = getApplication().getSharedPreferences("onBoard", Context.MODE_PRIVATE);
-                boolean isFirstTime = preferences.getBoolean("isFirstTime",true);//default value = true
-
-                if (isFirstTime){
-                    //if it's true then it's first time, and we will chage it to false
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putBoolean("isFirstTime",false);
-                    editor.apply();
-
-                    //then start Auth Activity
-                    Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-                else {
-
-                    //start Home Activity
-                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
+                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                finish();
             }
         },1500);
     }

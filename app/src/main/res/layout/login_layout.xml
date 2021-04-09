@@ -22,49 +22,81 @@
         android:layout_below="@+id/imgLogo"
         android:textColor="@color/black"
         android:textSize="30sp"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="35dp"/>
 
-    <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="270dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:id="@+id/txtLayoutEmail"
         android:layout_below="@id/txtMasuk"
-        android:hint="E-mail"
-        />
+        android:layout_centerHorizontal="true">
 
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="270dp"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEmailLogin"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:layout_below="@id/txtMasuk"
+            android:hint="E-mail"
+            android:background="@android:color/transparent">
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:layout_below="@id/etEmail"
+        android:id="@+id/txtLayoutPassword"
+        android:layout_below="@id/txtLayoutEmail"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:hint="Password"/>
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPasswordLogin"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Password"
+            android:background="@android:color/transparent">
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="270dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/etPassword"
+        android:layout_below="@id/txtLayoutPassword"
         android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
         android:text="MASUK"
         app:cornerRadius="55dp" />
 
-    <TextView
-        android:id="@+id/txtRegister"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
         android:layout_below="@id/btnLogin"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:text="Buat akun baru"
-        app:cornerRadius="55dp" />
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:id="@+id/txtTidakPunya"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Tidak punya akun?"
+            app:cornerRadius="55dp"
+            android:layout_marginRight="6dp"/>
+
+        <TextView
+            android:id="@+id/txtRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Daftar"
+            app:cornerRadius="55dp"
+            android:textColor="@color/navy_500"/>
+    </LinearLayout>
+
 
 </RelativeLayout>

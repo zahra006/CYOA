@@ -16,83 +16,104 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txtMasuk"
-        android:text="Buat Akun Baru"
+        android:id="@+id/txtBuat"
+        android:text="Daftar"
         android:fontFamily="sans-serif-smallcaps"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/imgLogo"
         android:textColor="@color/black"
         android:textSize="30sp"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="35dp"/>
 
-    <EditText
-        android:id="@+id/etNama"
-        android:layout_width="270dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Nama"
-        android:layout_below="@id/txtMasuk"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:textColor="@color/black" />
+        android:id="@+id/txtLayoutEmailRegister"
+        android:layout_below="@id/txtBuat"
+        android:layout_centerHorizontal="true">
 
-    <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="270dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/etUser"
-        android:hint="E-mail"
-        android:textColor="@color/black"
-        />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEmailRegister"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:layout_below="@id/txtMasuk"
+            android:hint="E-mail"
+            android:background="@android:color/transparent">
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="270dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:layout_below="@id/etEmail"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:hint="Password"
-        android:textColor="@color/black" />
+        android:id="@+id/txtLayoutPasswordRegister"
+        android:layout_below="@id/txtLayoutEmailRegister"
+        android:layout_centerHorizontal="true">
 
-    <EditText
-        android:id="@+id/etPasswordKonf"
-        android:layout_width="270dp"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPasswordRegister"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Password"
+            android:background="@android:color/transparent">
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:layout_below="@id/etPassword"
+        android:id="@+id/txtLayoutConfirmRegister"
+        android:layout_below="@id/txtLayoutPasswordRegister"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:hint="Konfirmasi Password"
-        android:textColor="@color/black" />
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etConfirmRegister"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Konfirmasi Password"
+            android:background="@android:color/transparent">
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnRegister"
         android:layout_width="270dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/etPasswordKonf"
+        android:layout_below="@id/txtLayoutConfirmRegister"
         android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
         android:text="DAFTAR"
         app:cornerRadius="55dp" />
 
-    <EditText
-        android:id="@+id/etUser"
-        android:layout_width="270dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/etNama"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:hint="Username"
-        android:textColor="@color/black" />
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/btnRegister"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:id="@+id/txtSudahPunya"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Sudah punya akun?"
+            app:cornerRadius="55dp"
+            android:layout_marginRight="6dp"/>
+
+        <TextView
+            android:id="@+id/txtLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Masuk"
+            app:cornerRadius="55dp"
+            android:textColor="@color/navy_500"/>
+    </LinearLayout>
 
 </RelativeLayout>
