@@ -17,7 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.android.volley.AuthFailureError;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
@@ -179,7 +179,7 @@ public class RegisterFragment extends Fragment {
 
             @Nullable
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams()  {
                 HashMap<String,String> map = new HashMap<>();
                 map.put("email",txtEmail.getText().toString().trim());
                 map.put("password",txtPassword.getText().toString().trim());

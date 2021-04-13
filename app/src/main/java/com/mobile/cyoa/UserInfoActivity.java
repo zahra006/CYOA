@@ -3,6 +3,7 @@ package com.mobile.cyoa;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,9 +18,14 @@ import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -41,6 +47,7 @@ public class UserInfoActivity extends AppCompatActivity {
     private static final int GALLERY_ADD_PROFILE=1;
     private Bitmap bitmap = null;
     private SharedPreferences userPref;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +57,9 @@ public class UserInfoActivity extends AppCompatActivity {
     }
 
     private void init() {
+        dialog = new ProgressDialog(this);
+        dialog.setCancelable(false);
+
         userPref = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
         layoutName = findViewById(R.id.txtLayoutNameUserInfo);
         layoutLastName = findViewById(R.id.txtLayoutLastNameUserInfo);
@@ -78,18 +88,37 @@ public class UserInfoActivity extends AppCompatActivity {
     }
 
     private void saveUserInfo() {
+        dialog.setMessage("Menyimpan...");
+        dialog.show();
+
+
         String name = txtName.getText().toString().trim();
         String lastname = txtLastName.getText().toString().trim();
 
         StringRequest request = new StringRequest(Request.Method.POST,Constant.SAVE_USER_INFO,response -> {
+            try {
+                JSONObject object = new JSONObject(response);
+                if (object.getBoolean("success")){
+                    SharedPreferences.Editor editor = userPref.edit();
+                    editor.putString("photo",object.getString("photo"));
+                    editor.apply();
+                    startActivity(new Intent(UserInfoActivity.this, MainActivity.class));
+                    finish();
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            dialog.dismiss();
 
         }, error -> {
             error.printStackTrace();
+            dialog.dismiss();
         }){
             //masukkan token ke header
 
             @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
+            public Map<String, String> getHeaders()  {
                 String token = userPref.getString("token","");
                 HashMap<String, String> map = new HashMap<>();
                 map.put("Authorization","Bearer "+token);
@@ -100,7 +129,7 @@ public class UserInfoActivity extends AppCompatActivity {
 
             @Nullable
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 HashMap<String, String> map = new HashMap<>();
                 map.put("name",name);
                 map.put("lastname",lastname);
@@ -110,6 +139,9 @@ public class UserInfoActivity extends AppCompatActivity {
                 return map;
             }
         };
+
+        RequestQueue queue = Volley.newRequestQueue(UserInfoActivity.this);
+        queue.add(request);
     }
 
     private String bitmapToString(Bitmap bitmap) {
