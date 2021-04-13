@@ -47,13 +47,13 @@
         android:textColor="@color/navy_500"
         android:textSize="16sp"
         android:layout_marginBottom="20dp"
-        android:id="@+id/pilihFoto"/>
+        android:id="@+id/txtPilihFoto"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txtLayoutNameUserInfo"
-        android:layout_below="@id/pilihFoto"
+        android:layout_below="@id/txtPilihFoto"
         android:layout_centerHorizontal="true">
 
         <com.google.android.material.textfield.TextInputEditText
