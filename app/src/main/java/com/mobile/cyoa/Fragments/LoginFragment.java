@@ -1,6 +1,7 @@
 package com.mobile.cyoa.Fragments;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
@@ -23,7 +24,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.mobile.cyoa.AuthActivity;
 import com.mobile.cyoa.Constant;
+import com.mobile.cyoa.MainActivity;
 import com.mobile.cyoa.R;
 
 import org.json.JSONException;
@@ -133,8 +136,11 @@ public class LoginFragment  extends Fragment {
                     editor.putString("lastname",user.getString("lastname"));
                     editor.putString("photo",user.getString("photo"));
                     editor.apply();
+                    editor.putBoolean("isLoggedIn",true);
                     //if success
                     Toast.makeText(getContext(),"Berhasil Masuk",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(((AuthActivity)getContext()), MainActivity.class));
+                    ((AuthActivity) getContext()).finish();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
