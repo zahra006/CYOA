@@ -134,12 +134,13 @@ public class LoginFragment  extends Fragment {
                     editor.putString("name",user.getString("name"));
                     editor.putString("lastname",user.getString("lastname"));
                     editor.putString("photo",user.getString("photo"));
-                    editor.apply();
                     editor.putBoolean("isLoggedIn",true);
+                    editor.apply();
+
                     //if success
-                    Toast.makeText(getContext(),"Berhasil Masuk",Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(((AuthActivity)getContext()), MainActivity.class));
                     ((AuthActivity) getContext()).finish();
+                    Toast.makeText(getContext(),"Berhasil Masuk",Toast.LENGTH_SHORT).show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -170,7 +170,7 @@ public class UserInfoActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==GALLERY_ADD_PROFILE && requestCode == RESULT_OK){
+        if (requestCode == GALLERY_ADD_PROFILE && resultCode == RESULT_OK){
             Uri imgUri = data.getData();
             circleImageView.setImageURI(imgUri);
             try {
