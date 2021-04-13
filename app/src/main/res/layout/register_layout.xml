@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background">
 
     <ImageView
+        android:contentDescription="Logo"
         android:id="@+id/imgLogo"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/crowns"
+        android:layout_marginTop="65dp"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -101,19 +102,19 @@
             android:id="@+id/txtSudahPunya"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:text="Sudah punya akun?"
             app:cornerRadius="55dp"
-            android:layout_marginRight="6dp"/>
+            android:layout_marginEnd="6dp"/>
 
         <TextView
             android:id="@+id/txtLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:text="Masuk"
             app:cornerRadius="55dp"
             android:textColor="@color/navy_500"/>
     </LinearLayout>
+
+
 
 </RelativeLayout>
