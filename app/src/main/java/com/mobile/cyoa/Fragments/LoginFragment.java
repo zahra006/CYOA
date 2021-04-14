@@ -25,7 +25,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.mobile.cyoa.AuthActivity;
 import com.mobile.cyoa.Constant;
-import com.mobile.cyoa.MainActivity;
+import com.mobile.cyoa.HomeActivity;
 import com.mobile.cyoa.R;
 
 import org.json.JSONException;
@@ -138,7 +138,7 @@ public class LoginFragment  extends Fragment {
                     editor.apply();
 
                     //if success
-                    startActivity(new Intent(((AuthActivity)getContext()), MainActivity.class));
+                    startActivity(new Intent(((AuthActivity)getContext()), HomeActivity.class));
                     ((AuthActivity) getContext()).finish();
                     Toast.makeText(getContext(),"Berhasil Masuk",Toast.LENGTH_SHORT).show();
                 }

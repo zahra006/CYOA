@@ -13,10 +13,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.widget.Button;
-import android.widget.Gallery;
 import android.widget.TextView;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
@@ -33,8 +31,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-
-import static android.graphics.ImageFormat.JPEG;
 
 public class UserInfoActivity extends AppCompatActivity {
 
@@ -102,7 +98,7 @@ public class UserInfoActivity extends AppCompatActivity {
                     SharedPreferences.Editor editor = userPref.edit();
                     editor.putString("photo",object.getString("photo"));
                     editor.apply();
-                    startActivity(new Intent(UserInfoActivity.this, MainActivity.class));
+                    startActivity(new Intent(UserInfoActivity.this, HomeActivity.class));
                     finish();
                 }
             } catch (JSONException e) {

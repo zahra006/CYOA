@@ -8,8 +8,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.mobile.cyoa.Fragments.LoginFragment;
-
 public class SplashActivity extends AppCompatActivity {
 
     Handler handler;
@@ -26,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
                 SharedPreferences userPref = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
                 boolean isLoggedIn = userPref.getBoolean("isLoggedIn",false);
                 if (isLoggedIn){
-                    startActivity(new Intent(SplashActivity.this,MainActivity.class));
+                    startActivity(new Intent(SplashActivity.this, HomeActivity.class));
                     finish();
                 }
                 else {
