@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/frameHomeContainer">
-
     </FrameLayout>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -39,9 +38,9 @@
                 android:id="@+id/bottom_nav"
                 android:background="@android:color/transparent"
                 app:labelVisibilityMode="unlabeled"
+                app:menu="@menu/menu_main"
                 android:outlineAmbientShadowColor="@android:color/transparent"
                 android:outlineSpotShadowColor="@android:color/transparent"/>
-
 
         </com.google.android.material.bottomappbar.BottomAppBar>
 
