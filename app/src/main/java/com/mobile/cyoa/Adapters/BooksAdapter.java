@@ -1,6 +1,7 @@
 package com.mobile.cyoa.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.cyoa.Constant;
+import com.mobile.cyoa.Fragments.SynopsisFragment;
 import com.mobile.cyoa.Models.Book;
 import com.mobile.cyoa.R;
 import com.squareup.picasso.Picasso;
@@ -39,6 +42,14 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksHolder>
         Book book = list.get(position);
         Picasso.get().load(Constant.URL+"storage/covers/"+book.getCover()).into(holder.imgBookCover);
         holder.txtBookTitle.setText(book.getTitle());
+        /*holder.cardView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, SynopsisFragment.class);
+            intent.putExtra("Title",book.getTitle());
+            intent.putExtra("Cover",book.getCover());
+            intent.putExtra("Synopsis",book.getSynopsis());
+            context.startActivity(intent);
+
+        });*/
     }
 
     @Override
@@ -50,12 +61,14 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksHolder>
 
         TextView txtBookTitle;
         ImageView imgBookCover;
+        CardView cardView;
 
         public BooksHolder(@NonNull View itemView) {
             super(itemView);
 
             txtBookTitle = itemView.findViewById(R.id.txtBookTitle);
             imgBookCover = itemView.findViewById(R.id.imgBookCover);
+            cardView = itemView.findViewById(R.id.cardviewBook);
 
         }
     }
