@@ -5,8 +5,6 @@ import org.w3c.dom.Text;
 public class Book {
     private int id;
     private String title, cover, synopsis;
-    private User user;
-
 
     public int getId() {
         return id;
@@ -33,19 +31,8 @@ public class Book {
         this.cover = cover;
     }
 
-    public String getSynopsis() {
-        return synopsis;
-    }
+    public String getSynopsis() {return synopsis;}
 
-    public void setSynopsis(String synopsis) {
-        this.synopsis = synopsis;
-    }
+    public void setSynopsis(String synopsis) {this.synopsis = synopsis;}
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

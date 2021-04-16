@@ -27,7 +27,6 @@
             android:textSize="13sp"
             android:textColor="#2d2d2d"
             android:id="@+id/txtBookTitle"/>
-
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

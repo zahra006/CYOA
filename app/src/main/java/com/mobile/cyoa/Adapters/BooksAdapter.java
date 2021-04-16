@@ -48,8 +48,8 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksHolder>
 
     class BooksHolder extends RecyclerView.ViewHolder{
 
-        private TextView txtBookTitle;
-        private ImageView imgBookCover;
+        TextView txtBookTitle;
+        ImageView imgBookCover;
 
         public BooksHolder(@NonNull View itemView) {
             super(itemView);
