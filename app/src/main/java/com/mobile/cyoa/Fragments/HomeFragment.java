@@ -20,6 +20,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.mobile.cyoa.Adapters.BooksAdapter;
 import com.mobile.cyoa.Constant;
 import com.mobile.cyoa.HomeActivity;
@@ -41,7 +42,7 @@ public class HomeFragment extends Fragment {
     private ArrayList<Book> arrayList;
     private SwipeRefreshLayout refreshLayout;
     private BooksAdapter booksAdapter;
-    private Toolbar toolbar;
+    private MaterialToolbar toolbar;
     private SharedPreferences sharedPreferences;
 
     public HomeFragment(){}
