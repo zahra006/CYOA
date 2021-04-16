@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -96,6 +97,7 @@ public class HomeFragment extends Fragment {
                     }
 
                     booksAdapter = new BooksAdapter(getContext(),arrayList);
+                    recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
                     recyclerView.setAdapter(booksAdapter);
                 }
             } catch (JSONException e) {
