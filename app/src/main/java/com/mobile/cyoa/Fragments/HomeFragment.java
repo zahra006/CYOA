@@ -64,6 +64,13 @@ public class HomeFragment extends Fragment {
         ((HomeActivity)getContext()).setSupportActionBar(toolbar);
 
         getBooks();
+
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getBooks();
+            }
+        });
     }
 
     private void getBooks() {
@@ -82,14 +89,21 @@ public class HomeFragment extends Fragment {
                         book.setId(bookObject.getInt("id"));
                         book.setTitle(bookObject.getString("title"));
                         book.setSynopsis(bookObject.getString("synopsis"));
+                        book.setCover(bookObject.getString("cover"));
+
+                        arrayList.add(book);
                     }
+
+                    booksAdapter = new BooksAdapter(getContext(),arrayList);
+                    recyclerView.setAdapter(booksAdapter);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            refreshLayout.setRefreshing(false);
         },error -> {
             error.printStackTrace();
-
+            refreshLayout.setRefreshing(false);
         }){
             //provide token in header
 
