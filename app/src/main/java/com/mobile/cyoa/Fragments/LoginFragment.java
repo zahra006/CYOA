@@ -142,6 +142,9 @@ public class LoginFragment  extends Fragment {
                     ((AuthActivity) getContext()).finish();
                     Toast.makeText(getContext(),"Berhasil Masuk",Toast.LENGTH_SHORT).show();
                 }
+                else {
+                    Toast.makeText(getContext(),"Gagal Masuk",Toast.LENGTH_SHORT).show();
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
