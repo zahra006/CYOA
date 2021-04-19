@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".SynopsisActivity">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -13,12 +17,11 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center">
-
             <ImageView
-                android:id="@+id/imgSynopsisCover"
                 android:layout_width="125dp"
-                android:layout_height="200dp"
-                android:background="#2d2d2d" />
+                android:layout_height="170dp"
+                android:id="@+id/imgSynopsisCover"
+                android:background="#2d2d2d"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -49,12 +52,6 @@
                 android:layout_marginTop="25dp"
                 android:text="READ"
                 android:id="@+id/btnRead"/>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="REVIEW"
-                android:id="@+id/btnComment"/>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

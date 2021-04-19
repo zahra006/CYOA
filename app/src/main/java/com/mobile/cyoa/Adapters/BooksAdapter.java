@@ -57,9 +57,9 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksHolder>
             public void onClick(View v) {
                 Toast.makeText(context, "Recycle Click Position: " + position, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, SynopsisActivity.class);
-                    intent.putExtra("Title",book.getTitle());
-                    intent.putExtra("Cover",book.getCover());
-                    intent.putExtra("Synopsis",book.getSynopsis());
+                    intent.putExtra("Title",list.get(position).getTitle());
+                    intent.putExtra("Cover",list.get(position).getCover());
+                    intent.putExtra("Synopsis",list.get(position).getSynopsis());
                     context.startActivity(intent);
 
             }

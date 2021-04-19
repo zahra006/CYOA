@@ -3,20 +3,41 @@ package com.mobile.cyoa;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.mobile.cyoa.Fragments.HomeFragment;
 import com.mobile.cyoa.Fragments.SynopsisFragment;
+import com.squareup.picasso.Picasso;
 
 public class SynopsisActivity extends AppCompatActivity {
-
-    FragmentManager fragmentManager;
+    TextView txtTitle, txtSynopsis;
+    Button btnRead;
+    ImageView imgSyn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.frameSynopsisContainer, new SynopsisFragment()).commit();
+        setContentView(R.layout.activity_synopsis);
+
+        txtTitle = findViewById(R.id.txtSynopsisTitle);
+        txtSynopsis = findViewById(R.id.txtSynopsis);
+        btnRead = findViewById(R.id.btnRead);
+        imgSyn = findViewById(R.id.imgSynopsisCover);
+
+        Intent intent = getIntent();
+        String title = intent.getExtras().getString("Title");
+        String synopsis = intent.getExtras().getString("Synopsis");
+        String cover = intent.getExtras().getString("Cover");
+
+        txtTitle.setText(title);
+        txtSynopsis.setText(synopsis);
+        Picasso.get().load(Constant.URL+"storage/covers/"+cover).into(imgSyn);
+
+
     }
 }

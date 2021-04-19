@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +17,8 @@ import com.mobile.cyoa.R;
 public class SynopsisFragment extends Fragment {
     private View view;
     TextView txtTitle, txtSynopsis;
+    Button btnRead;
+    ImageView imgSyn;
 
     public SynopsisFragment(){
 
@@ -29,6 +33,11 @@ public class SynopsisFragment extends Fragment {
     }
 
     private void init() {
+        txtTitle = view.findViewById(R.id.txtSynopsisTitle);
+        txtSynopsis = view.findViewById(R.id.txtSynopsis);
+        btnRead = view.findViewById(R.id.btnRead);
+        imgSyn = view.findViewById(R.id.imgSynopsisCover);
+
 
     }
 }
