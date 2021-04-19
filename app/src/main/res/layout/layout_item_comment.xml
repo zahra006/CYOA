@@ -46,7 +46,7 @@
                 android:src="@drawable/ic_baseline_more_vert_24"
                 android:background="@android:color/transparent"
                 android:layout_gravity="center_vertical"
-                android:id="@+id/btnOptionComment"
+                android:id="@+id/imgOptionComment"
                 />
 
         </LinearLayout>
