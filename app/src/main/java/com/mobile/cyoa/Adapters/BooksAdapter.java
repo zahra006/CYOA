@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.cyoa.Constant;
 import com.mobile.cyoa.Fragments.SynopsisFragment;
+import com.mobile.cyoa.HomeActivity;
 import com.mobile.cyoa.Models.Book;
 import com.mobile.cyoa.R;
 import com.mobile.cyoa.SynopsisActivity;
@@ -46,12 +47,12 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksHolder>
         holder.txtBookTitle.setText(book.getTitle());
 
         holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, SynopsisActivity.class);
+            Intent intent = new Intent(((HomeActivity)context), SynopsisActivity.class);
             intent.putExtra("Title",list.get(position).getTitle());
             intent.putExtra("Cover",list.get(position).getCover());
             intent.putExtra("Synopsis",list.get(position).getSynopsis());
+            intent.putExtra("bookId",book.getId());
             context.startActivity(intent);
-
         });
 
     }
