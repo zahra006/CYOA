@@ -40,8 +40,31 @@
                     />
 
             </LinearLayout>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_more_vert_24"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/btnOptionComment"
+                />
 
         </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtComment"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="8dp"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            />
+        <VideoView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#cccccc"/>
 
     </LinearLayout>
 
