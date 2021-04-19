@@ -24,8 +24,6 @@ public class SynopsisActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_synopsis);
         init();
-
-
     }
 
     private void init() {
