@@ -120,4 +120,5 @@ public class HomeFragment extends Fragment {
         RequestQueue queue = Volley.newRequestQueue(getContext());
         queue.add(request);
     }
+
 }

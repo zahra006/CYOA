@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,6 +14,7 @@ import com.mobile.cyoa.R;
 
 public class SynopsisFragment extends Fragment {
     private View view;
+    TextView txtTitle, txtSynopsis;
 
     public SynopsisFragment(){
 
@@ -21,8 +23,12 @@ public class SynopsisFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.layout_register,container,false);
-        //init();
+        view = inflater.inflate(R.layout.layout_synopsis,container,false);
+        init();
         return view;
+    }
+
+    private void init() {
+
     }
 }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -16,6 +17,7 @@ import com.mobile.cyoa.Constant;
 import com.mobile.cyoa.Fragments.SynopsisFragment;
 import com.mobile.cyoa.Models.Book;
 import com.mobile.cyoa.R;
+import com.mobile.cyoa.SynopsisActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -50,7 +52,22 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksHolder>
             context.startActivity(intent);
 
         });*/
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Recycle Click Position: " + position, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, SynopsisActivity.class);
+                    intent.putExtra("Title",book.getTitle());
+                    intent.putExtra("Cover",book.getCover());
+                    intent.putExtra("Synopsis",book.getSynopsis());
+                    context.startActivity(intent);
+
+            }
+
+        });
+
     }
+
 
     @Override
     public int getItemCount() {
@@ -61,15 +78,16 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksHolder>
 
         TextView txtBookTitle;
         ImageView imgBookCover;
-        CardView cardView;
+        //CardView cardView;
 
         public BooksHolder(@NonNull View itemView) {
             super(itemView);
 
             txtBookTitle = itemView.findViewById(R.id.txtBookTitle);
             imgBookCover = itemView.findViewById(R.id.imgBookCover);
-            cardView = itemView.findViewById(R.id.cardviewBook);
+            //cardView = itemView.findViewById(R.id.cardviewBook);
 
         }
+
     }
 }
