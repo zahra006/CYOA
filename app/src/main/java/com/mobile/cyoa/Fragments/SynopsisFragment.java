@@ -27,7 +27,7 @@ public class SynopsisFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.layout_synopsis,container,false);
+        view = inflater.inflate(R.layout.activity_synopsis,container,false);
         init();
         return view;
     }

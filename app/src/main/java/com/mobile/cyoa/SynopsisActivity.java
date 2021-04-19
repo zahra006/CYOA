@@ -16,7 +16,7 @@ import com.squareup.picasso.Picasso;
 
 public class SynopsisActivity extends AppCompatActivity {
     TextView txtTitle, txtSynopsis;
-    Button btnRead;
+    Button btnRead, btnComment;
     ImageView imgSyn;
 
     @Override
@@ -27,6 +27,7 @@ public class SynopsisActivity extends AppCompatActivity {
         txtTitle = findViewById(R.id.txtSynopsisTitle);
         txtSynopsis = findViewById(R.id.txtSynopsis);
         btnRead = findViewById(R.id.btnRead);
+        btnComment = findViewById(R.id.btnComment);
         imgSyn = findViewById(R.id.imgSynopsisCover);
 
         Intent intent = getIntent();

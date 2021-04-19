@@ -44,25 +44,13 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksHolder>
         Book book = list.get(position);
         Picasso.get().load(Constant.URL+"storage/covers/"+book.getCover()).into(holder.imgBookCover);
         holder.txtBookTitle.setText(book.getTitle());
-        /*holder.cardView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, SynopsisFragment.class);
-            intent.putExtra("Title",book.getTitle());
-            intent.putExtra("Cover",book.getCover());
-            intent.putExtra("Synopsis",book.getSynopsis());
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, SynopsisActivity.class);
+            intent.putExtra("Title",list.get(position).getTitle());
+            intent.putExtra("Cover",list.get(position).getCover());
+            intent.putExtra("Synopsis",list.get(position).getSynopsis());
             context.startActivity(intent);
-
-        });*/
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "Recycle Click Position: " + position, Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(context, SynopsisActivity.class);
-                    intent.putExtra("Title",list.get(position).getTitle());
-                    intent.putExtra("Cover",list.get(position).getCover());
-                    intent.putExtra("Synopsis",list.get(position).getSynopsis());
-                    context.startActivity(intent);
-
-            }
 
         });
 
