@@ -23,7 +23,12 @@ public class SynopsisActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_synopsis);
+        init();
 
+
+    }
+
+    private void init() {
         txtTitle = findViewById(R.id.txtSynopsisTitle);
         txtSynopsis = findViewById(R.id.txtSynopsis);
         btnRead = findViewById(R.id.btnRead);
@@ -39,6 +44,13 @@ public class SynopsisActivity extends AppCompatActivity {
         txtSynopsis.setText(synopsis);
         Picasso.get().load(Constant.URL+"storage/covers/"+cover).into(imgSyn);
 
+        btnRead.setOnClickListener(v -> {
+
+        });
+
+        btnComment.setOnClickListener(v -> {
+
+        });
 
     }
 }
