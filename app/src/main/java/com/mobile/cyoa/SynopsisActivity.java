@@ -51,7 +51,7 @@ public class SynopsisActivity extends AppCompatActivity {
             Intent i = new Intent(SynopsisActivity.this,CommentActivity.class);
             i.putExtra("BookId",book_id);
             i.putExtra("Title",title);
-
+            startActivity(i);
         });
 
     }
