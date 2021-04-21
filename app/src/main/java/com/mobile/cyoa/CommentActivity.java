@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -16,6 +18,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.mobile.cyoa.Adapters.CommentsAdapter;
+import com.mobile.cyoa.Fragments.HomeFragment;
+import com.mobile.cyoa.Models.Book;
 import com.mobile.cyoa.Models.Comment;
 import com.mobile.cyoa.Models.User;
 
@@ -33,7 +37,10 @@ public class CommentActivity extends AppCompatActivity {
     private ArrayList<Comment> list;
     private CommentsAdapter adapter;
     private int bookId = 0;
+    public static int bookPosition = 0;
     private SharedPreferences preferences;
+    private EditText txtAddComment;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,19 +50,23 @@ public class CommentActivity extends AppCompatActivity {
     }
 
     private void init() {
+        dialog = new ProgressDialog(this);
+        dialog.setCancelable(false);
         preferences = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
         recyclerView = findViewById(R.id.recyclerComments);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         bookId = getIntent().getExtras().getInt("bookId",0);
+        bookPosition = getIntent().getExtras().getInt("bookPosition",-1);
+        txtAddComment = findViewById(R.id.etComment);
         getComments();
     }
 
     private void getComments() {
         list = new ArrayList<>();
-        StringRequest request = new StringRequest(Request.Method.POST,Constant.COMMENTS,res -> {
+        StringRequest request = new StringRequest(Request.Method.POST,Constant.COMMENTS,response -> {
             try {
-                JSONObject object = new JSONObject(res);
+                JSONObject object = new JSONObject(response);
                 if (object.getBoolean("success")){
                     JSONArray comments = new JSONArray(object.getString("comments"));
                     for (int i = 0; i < comments.length(); i++) {
@@ -64,7 +75,7 @@ public class CommentActivity extends AppCompatActivity {
 
                         User mUser = new User();
                         mUser.setId(user.getInt("id"));
-                        mUser.setPhoto(user.getString("photo"));
+                        mUser.setPhoto(Constant.URL+"storage/profiles/"+user.getString("photo"));
                         mUser.setUserName(user.getString("name")+" "+user.getString("lastname"));
 
                         Comment mComment = new Comment();
@@ -110,5 +121,65 @@ public class CommentActivity extends AppCompatActivity {
 
     public void goBack(View view) {
         super.onBackPressed();
+    }
+
+    public void addComment(View view) {
+        dialog.setMessage("Menambahkan...");
+        dialog.show();
+        String commentText = txtAddComment.getText().toString();
+        if (commentText.length()>0){
+            StringRequest request = new StringRequest(Request.Method.POST,Constant.CREATE_COMMENTS,response -> {
+                try {
+                    JSONObject object = new JSONObject(response);
+                    if (object.getBoolean("success")){
+                        JSONObject comment = object.getJSONObject("comment");
+                        JSONObject user = comment.getJSONObject("user");
+
+                        Comment c = new Comment();
+
+                        User u = new User();
+                        u.setId(user.getInt("id"));
+                        u.setPhoto(Constant.URL+"storage/profiles/"+user.getString("photo"));
+                        u.setUserName(user.getString("name")+" "+user.getString("lastname"));
+
+                        c.setUser(u);
+                        c.setId(comment.getInt("id"));
+                        c.setDate(comment.getString("created_at"));
+                        c.setComment(comment.getString("comment"));
+
+
+
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            },error -> {
+                error.printStackTrace();
+                dialog.dismiss();
+            }){
+                //add token to header
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    String token = preferences.getString("token", "");
+                    HashMap<String, String> map = new HashMap<>();
+                    map.put("Authorization", "Bearer "+token);
+                    return map;
+                }
+
+                @Nullable
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    HashMap<String, String> map = new HashMap<>();
+                    map.put("id",bookId+"");
+                    map.put("comment",commentText);
+                    return map;
+                }
+            };
+            RequestQueue queue = Volley.newRequestQueue(CommentActivity.this);
+            queue.add(request);
+        }
+
     }
 }

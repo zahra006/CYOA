@@ -1,17 +1,13 @@
 package com.mobile.cyoa;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.mobile.cyoa.Fragments.HomeFragment;
-import com.mobile.cyoa.Fragments.SynopsisFragment;
 import com.squareup.picasso.Picasso;
 
 public class SynopsisActivity extends AppCompatActivity {
@@ -38,6 +34,7 @@ public class SynopsisActivity extends AppCompatActivity {
         String synopsis = intent.getExtras().getString("Synopsis");
         String cover = intent.getExtras().getString("Cover");
         int book_id = intent.getExtras().getInt("book_Id",0);
+        int book_position = intent.getExtras().getInt("book_position",-1);
 
         txtTitle.setText(title);
         txtSynopsis.setText(synopsis);
@@ -50,6 +47,7 @@ public class SynopsisActivity extends AppCompatActivity {
         btnComment.setOnClickListener(v -> {
             Intent i = new Intent(SynopsisActivity.this,CommentActivity.class);
             i.putExtra("bookId",book_id);
+            i.putExtra("bookPosition",book_position);
             startActivity(i);
         });
 

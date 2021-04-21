@@ -39,7 +39,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.Commen
     @Override
     public void onBindViewHolder(@NonNull CommentsHolder holder, int position) {
         Comment comment = list.get(position);
-        Picasso.get().load(Constant.URL+"storage/profiles/"+comment.getUser().getPhoto()).into(holder.imgProfile);
+        Picasso.get().load(comment.getUser().getPhoto()).into(holder.imgProfile);
         holder.txtName.setText(comment.getUser().getUserName());
         holder.txtDate.setText(comment.getDate());
         holder.txtComment.setText(comment.getComment());

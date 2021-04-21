@@ -44,15 +44,7 @@
         android:orientation="horizontal"
         android:background="@color/white"
         android:layout_alignParentBottom="true">
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_close_24"
-            android:background="@android:color/transparent"
-            android:layout_marginLeft="4dp"
-            android:layout_margin="4dp"
-            android:id="@+id/btnCancelComment"
-            android:layout_gravity="center_vertical"/>
+
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -62,7 +54,8 @@
             android:inputType="textMultiLine"
             android:textSize="16sp"
             android:id="@+id/etComment"
-            android:layout_gravity="center_vertical"/>
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="6dp"/>
         <ImageButton
             android:layout_width="60dp"
             android:layout_height="30dp"
@@ -70,7 +63,8 @@
             android:background="@drawable/bg_round"
             android:layout_marginRight="6dp"
             android:layout_gravity="center_vertical"
-            android:id="@+id/btnAddComment"/>
+            android:id="@+id/btnAddComment"
+            android:onClick="addComment"/>
 
 
 

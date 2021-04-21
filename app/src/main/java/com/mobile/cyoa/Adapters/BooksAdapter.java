@@ -7,14 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.cyoa.Constant;
-import com.mobile.cyoa.Fragments.SynopsisFragment;
 import com.mobile.cyoa.HomeActivity;
 import com.mobile.cyoa.Models.Book;
 import com.mobile.cyoa.R;
@@ -52,6 +49,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksHolder>
             intent.putExtra("Cover",book.getCover());
             intent.putExtra("Synopsis",book.getSynopsis());
             intent.putExtra("book_Id",book.getId());
+            intent.putExtra("book_position",position);
             context.startActivity(intent);
         });
 
