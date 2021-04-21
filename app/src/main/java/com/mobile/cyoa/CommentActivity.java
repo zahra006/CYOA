@@ -33,7 +33,7 @@ public class CommentActivity extends AppCompatActivity {
     private ArrayList<Comment> list;
     private CommentsAdapter adapter;
     private int bookId = 0;
-    private SharedPreferences sharedPreferences;
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +43,8 @@ public class CommentActivity extends AppCompatActivity {
     }
 
     private void init() {
-        sharedPreferences = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
-        recyclerView = findViewById(R.id.recyclerComment);
+        preferences = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+        recyclerView = findViewById(R.id.recyclerComments);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         bookId = getIntent().getExtras().getInt("bookId",0);
@@ -53,9 +53,9 @@ public class CommentActivity extends AppCompatActivity {
 
     private void getComments() {
         list = new ArrayList<>();
-        StringRequest request = new StringRequest(Request.Method.POST,Constant.COMMENTS,response -> {
+        StringRequest request = new StringRequest(Request.Method.POST,Constant.COMMENTS,res -> {
             try {
-                JSONObject object = new JSONObject(response);
+                JSONObject object = new JSONObject(res);
                 if (object.getBoolean("success")){
                     JSONArray comments = new JSONArray(object.getString("comments"));
                     for (int i = 0; i < comments.length(); i++) {
@@ -89,7 +89,7 @@ public class CommentActivity extends AppCompatActivity {
         }){
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                String token = sharedPreferences.getString("token", "");
+                String token = preferences.getString("token", "");
                 HashMap<String, String> map = new HashMap<>();
                 map.put("Authorization", "Bearer "+token);
                 return map;
