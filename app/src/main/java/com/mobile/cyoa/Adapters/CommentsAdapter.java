@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mobile.cyoa.Constant;
 import com.mobile.cyoa.Models.Comment;
 import com.mobile.cyoa.R;
 import com.squareup.picasso.Picasso;
@@ -31,16 +32,16 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.Commen
     @NonNull
     @Override
     public CommentsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item_comment,parent,false);
-        return new CommentsHolder(view);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item_comment,parent,false);
+        return new CommentsHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CommentsHolder holder, int position) {
         Comment comment = list.get(position);
-        Picasso.get().load(comment.getUser().getPhoto()).into(holder.imgUserP);
-        holder.txtUsernameComment.setText(comment.getUser().getUserName());
-        holder.txtDateComment.setText(comment.getDate());
+        Picasso.get().load(Constant.URL+"storage/covers/"+comment.getUser().getPhoto()).into(holder.imgProfile);
+        holder.txtName.setText(comment.getUser().getUserName());
+        holder.txtDate.setText(comment.getDate());
         holder.txtComment.setText(comment.getComment());
 
     }
@@ -52,18 +53,18 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.Commen
 
     class CommentsHolder extends RecyclerView.ViewHolder {
 
-        private CircleImageView imgUserP;
-        private TextView txtComment, txtDateComment, txtUsernameComment;
+        private CircleImageView imgProfile;
+        private TextView txtComment, txtDate, txtName;
         private ImageButton imgOption;
 
 
         public CommentsHolder(@NonNull View itemView) {
             super(itemView);
 
-            imgUserP = itemView.findViewById(R.id.imgUserComment);
+            imgProfile = itemView.findViewById(R.id.imgUserComment);
             txtComment = itemView.findViewById(R.id.txtComment);
-            txtDateComment = itemView.findViewById(R.id.txtDateComment);
-            txtUsernameComment = itemView.findViewById(R.id.txtUsernameComment);
+            txtDate = itemView.findViewById(R.id.txtDateComment);
+            txtName = itemView.findViewById(R.id.txtUsernameComment);
             imgOption = itemView.findViewById(R.id.imgOptionComment);
         }
     }

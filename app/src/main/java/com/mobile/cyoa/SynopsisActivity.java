@@ -37,7 +37,7 @@ public class SynopsisActivity extends AppCompatActivity {
         String title = intent.getExtras().getString("Title");
         String synopsis = intent.getExtras().getString("Synopsis");
         String cover = intent.getExtras().getString("Cover");
-        String book_id = intent.getExtras().getString("bookId");
+        int book_id = intent.getExtras().getInt("book_Id",0);
 
         txtTitle.setText(title);
         txtSynopsis.setText(synopsis);
@@ -49,8 +49,7 @@ public class SynopsisActivity extends AppCompatActivity {
 
         btnComment.setOnClickListener(v -> {
             Intent i = new Intent(SynopsisActivity.this,CommentActivity.class);
-            i.putExtra("BookId",book_id);
-            i.putExtra("Title",title);
+            i.putExtra("bookId",book_id);
             startActivity(i);
         });
 

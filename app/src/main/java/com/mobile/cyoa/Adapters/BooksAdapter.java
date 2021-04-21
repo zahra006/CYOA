@@ -48,10 +48,10 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksHolder>
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(((HomeActivity)context), SynopsisActivity.class);
-            intent.putExtra("Title",list.get(position).getTitle());
-            intent.putExtra("Cover",list.get(position).getCover());
-            intent.putExtra("Synopsis",list.get(position).getSynopsis());
-            intent.putExtra("bookId",book.getId());
+            intent.putExtra("Title",book.getTitle());
+            intent.putExtra("Cover",book.getCover());
+            intent.putExtra("Synopsis",book.getSynopsis());
+            intent.putExtra("book_Id",book.getId());
             context.startActivity(intent);
         });
 
@@ -67,15 +67,12 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksHolder>
 
         TextView txtBookTitle;
         ImageView imgBookCover;
-        //CardView cardView;
 
         public BooksHolder(@NonNull View itemView) {
             super(itemView);
 
             txtBookTitle = itemView.findViewById(R.id.txtBookTitle);
             imgBookCover = itemView.findViewById(R.id.imgBookCover);
-            //cardView = itemView.findViewById(R.id.cardviewBook);
-
         }
 
     }
