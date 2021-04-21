@@ -147,6 +147,10 @@ public class CommentActivity extends AppCompatActivity {
                         c.setDate(comment.getString("created_at"));
                         c.setComment(comment.getString("comment"));
 
+                        list.add(c);
+                        recyclerView.getAdapter().notifyDataSetChanged();
+                        txtAddComment.setText("");
+
 
 
 
@@ -154,6 +158,7 @@ public class CommentActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                dialog.dismiss();
 
             },error -> {
                 error.printStackTrace();
