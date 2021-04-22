@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CommentActivity">
-    
+
     <com.google.android.material.appbar.MaterialToolbar
         android:layout_width="match_parent"
         app:title=" "
@@ -26,8 +26,6 @@
             android:text="Review"
             android:textColor="@color/black"
             android:textStyle="bold"/>
-
-
     </com.google.android.material.appbar.MaterialToolbar>
 
     <androidx.recyclerview.widget.RecyclerView

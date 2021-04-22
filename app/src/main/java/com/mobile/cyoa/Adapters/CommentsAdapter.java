@@ -1,7 +1,9 @@
 package com.mobile.cyoa.Adapters;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +39,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.Commen
 
     private Context context;
     private ArrayList<Comment> list;
-    private SharedPreferences sharedPreferences;
+    private SharedPreferences preferences;
     private ProgressDialog dialog;
 
     public CommentsAdapter(Context context, ArrayList<Comment> list) {
@@ -45,7 +47,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.Commen
         this.list = list;
         dialog = new ProgressDialog(context);
         dialog.setCancelable(false);
-        sharedPreferences = context.getSharedPreferences("user", Context.MODE_PRIVATE);
+        preferences = context.getSharedPreferences("user", Context.MODE_PRIVATE);
     }
 
     @NonNull
@@ -63,13 +65,12 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.Commen
         holder.txtDate.setText(comment.getDate());
         holder.txtComment.setText(comment.getComment());
 
-        if (sharedPreferences.getInt("id",0)!=comment.getUser().getId()){
+        if (preferences.getInt("id",0)!=comment.getUser().getId()){
             holder.imgDelete.setVisibility(View.GONE);
-        } else {
-            holder.imgDelete.setVisibility(View.VISIBLE);
         }
-        /*
-        holder.imgDelete.setOnClickListener(v -> {
+        else {
+            holder.imgDelete.setVisibility(View.VISIBLE);
+            holder.imgDelete.setOnClickListener(v -> {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setMessage("Apakah kamu yakin akan menghapus ini?");
                 builder.setPositiveButton("Hapus", new DialogInterface.OnClickListener() {
@@ -85,7 +86,12 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.Commen
                     }
                 });
                 builder.show();
-        });
+            });
+
+        }
+
+        /*
+
 
          */
 
@@ -112,7 +118,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.Commen
         }){
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                String token = sharedPreferences.getString("token", "");
+                String token = preferences.getString("token", "");
                 HashMap<String, String> map = new HashMap<>();
                 map.put("Authorization", "Bearer "+token);
                 return map;

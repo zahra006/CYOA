@@ -154,6 +154,7 @@ public class RegisterFragment extends Fragment {
                     //sharedpreference user
                     SharedPreferences userPref = getActivity().getApplicationContext().getSharedPreferences("user",getContext().MODE_PRIVATE);
                     SharedPreferences.Editor editor = userPref.edit();
+                    editor.putInt("id",user.getInt("id"));
                     editor.putString("token",object.getString("token"));
                     editor.putString("name",user.getString("name"));
                     editor.putString("lastname",user.getString("lastname"));
