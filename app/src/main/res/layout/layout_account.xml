@@ -66,7 +66,7 @@
                     android:textSize="16sp"
                     android:layout_marginTop="10dp"
                     android:textStyle="bold"
-                    android:id="@+id/txtLayoutFirstNameProf"/>
+                    android:id="@+id/txtFirstNameProf"/>
             </TableRow>
             <TableRow>
                 <TextView
@@ -86,7 +86,7 @@
                     android:textSize="16sp"
                     android:layout_marginTop="10dp"
                     android:textStyle="bold"
-                    android:id="@+id/txtLayoutLastNameProf"/>
+                    android:id="@+id/txtLastNameProf"/>
             </TableRow>
             <TableRow>
                 <TextView
