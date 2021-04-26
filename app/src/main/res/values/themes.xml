@@ -15,6 +15,10 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
+
+    </style>
+    <style name="Button.Red" parent="ThemeOverlay.AppCompat">
+        <item name="colorPrimary">@color/red</item>
     </style>
 
     <style name="Theme.CYOA.BottomAppBar" parent="Theme.MaterialComponents.Light.NoActionBar">

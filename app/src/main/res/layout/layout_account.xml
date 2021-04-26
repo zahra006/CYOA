@@ -109,6 +109,17 @@
                     android:id="@+id/txtEmailProf"/>
             </TableRow>
         </TableLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="KELUAR"
+            android:layout_gravity="right"
+            android:layout_marginTop="30dp"
+            android:theme="@style/Button.Red"
+            android:id="@+id/btnLogout"
+            />
+
     </LinearLayout>
 
 </LinearLayout>
