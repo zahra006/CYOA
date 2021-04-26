@@ -34,36 +34,81 @@
             android:layout_gravity="end"
             android:src="@drawable/ic_baseline_edit_24"
             android:background="@android:color/transparent"
-            android:id="@+id/imgEdit"/>
+            android:id="@+id/imgEdit"
+            android:contentDescription="Edit Button"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:src="@color/gray"
             android:layout_gravity="center_horizontal"
-            android:id="@+id/imgUserDetail"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="Nama Depan:"
-            android:textSize="16sp"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_marginTop="10dp"
-            android:text="Nama Belakang:"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_marginTop="10dp"
-            android:text="Email:"/>
+            android:id="@+id/imgUserDetail"
+            android:layout_marginBottom="20dp"/>
 
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:text="Nama Depan:"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="Zahratul"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:id="@+id/txtLayoutFirstNameProf"/>
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:text="Nama Belakang:"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="Aini Akbar"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:id="@+id/txtLayoutLastNameProf"/>
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:text="Email:"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="zahratul.ainiakbar@gmail.com"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:id="@+id/txtEmailProf"/>
+            </TableRow>
+        </TableLayout>
     </LinearLayout>
 
 </LinearLayout>
