@@ -27,6 +27,7 @@ import com.mobile.cyoa.Constant;
 import com.mobile.cyoa.HomeActivity;
 import com.mobile.cyoa.Models.Book;
 import com.mobile.cyoa.R;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -92,9 +93,35 @@ public class AccountFragment extends Fragment {
     }
 
     private void getUser() {
-        arrayList = arrayList = new ArrayList<>();
-        //StringRequest request = new StringRequest(Request.Method.GET,Constant.)
-        //JSONObject user =
+        StringRequest request = new StringRequest(Request.Method.GET,Constant.USER, response -> {
+            try {
+                JSONObject object = new JSONObject(response);
+                if (object.getBoolean("success")){
+                    JSONObject user = object.getJSONObject("user");
+                    txtFirst.setText(user.getString("name"));
+                    txtLast.setText(user.getString("lastname"));
+                    txtEmail.setText(user.getString("email"));
+                    Picasso.get().load(Constant.URL+"storage/profiles/"+user.getString("photo")).into(imgProf);
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        },error -> {
+            error.printStackTrace();
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                String token = preferences.getString("token", "");
+                HashMap<String, String> map = new HashMap<>();
+                map.put("Authorization", "Bearer "+token);
+                return map;
+            }
+        };
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        queue.add(request);
+
     }
 
     private void logout() {

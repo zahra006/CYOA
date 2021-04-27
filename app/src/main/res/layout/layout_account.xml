@@ -38,12 +38,13 @@
             android:contentDescription="Edit Button"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:src="@color/gray"
             android:layout_gravity="center_horizontal"
             android:id="@+id/imgUserDetail"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            app:civ_border_color="@color/black"/>
 
         <TableLayout
             android:layout_width="match_parent"
@@ -62,7 +63,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="Zahratul"
                     android:textSize="16sp"
                     android:layout_marginTop="10dp"
                     android:textStyle="bold"
@@ -82,7 +82,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="Aini Akbar"
                     android:textSize="16sp"
                     android:layout_marginTop="10dp"
                     android:textStyle="bold"
@@ -102,7 +101,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="zahratul.ainiakbar@gmail.com"
                     android:textSize="16sp"
                     android:layout_marginTop="10dp"
                     android:textStyle="bold"
