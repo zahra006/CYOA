@@ -24,6 +24,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.mobile.cyoa.AuthActivity;
 import com.mobile.cyoa.Constant;
+import com.mobile.cyoa.EditAccountActivity;
 import com.mobile.cyoa.HomeActivity;
 import com.mobile.cyoa.Models.Book;
 import com.mobile.cyoa.R;
@@ -45,7 +46,6 @@ public class AccountFragment extends Fragment {
     private CircleImageView imgProf;
     private SharedPreferences preferences;
     private Button btnLogout;
-    private ArrayList<Book> arrayList;
 
 
     public AccountFragment (){
@@ -73,20 +73,19 @@ public class AccountFragment extends Fragment {
 
         btnLogout.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-            builder.setMessage("Apakah anda ingin Keluar dari Aplikasi?");
-            builder.setPositiveButton("Keluar", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    logout();
-                }
+            builder.setMessage("Apakah anda ingin Keluar?");
+            builder.setPositiveButton("Keluar", (dialog, which) -> {
+                logout();
             });
-            builder.setNegativeButton("Batal", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
+            builder.setNegativeButton("Batal", (dialog, which) -> {
 
-                }
             });
             builder.show();
+        });
+
+        btnEdit.setOnClickListener(v -> {
+            startActivity(new Intent((getContext()), EditAccountActivity.class));
+            ((HomeActivity)getContext()).finish();
         });
 
 
