@@ -46,43 +46,13 @@ public class EditAccountActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.etEmailProf);
         btnSaveEdit = findViewById(R.id.btnSave);
         imgEdProf = findViewById(R.id.imgUserDetail);
-        getUser();
+
         editUser();
         btnSaveEdit.setOnClickListener(v ->
             startActivity(new Intent(EditAccountActivity.this, HomeActivity.class))
         );
     }
 
-    private void getUser() {
-        StringRequest request = new StringRequest(Request.Method.GET,Constant.USER, response -> {
-            try {
-                JSONObject object = new JSONObject(response);
-                if (object.getBoolean("success")){
-                    JSONObject user = object.getJSONObject("user");
-                    etFirst.setText(user.getString("name"));
-                    etLast.setText(user.getString("lastname"));
-                    etEmail.setText(user.getString("email"));
-                    Picasso.get().load(Constant.URL+"storage/profiles/"+user.getString("photo")).into(imgEdProf);
-                }
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-        },error ->
-            error.printStackTrace()
-        ){
-            @Override
-            public Map<String, String> getHeaders(){
-                String token = preferences.getString("token", "");
-                HashMap<String, String> map = new HashMap<>();
-                map.put("Authorization", "Bearer "+token);
-                return map;
-            }
-        };
-        RequestQueue queue = Volley.newRequestQueue(EditAccountActivity.this);
-        queue.add(request);
-    }
 
     private void editUser() {
 
