@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CYOA"
         android:usesCleartextTraffic="true">
-        <activity android:name=".EditAccountActivity"></activity>
+        <activity android:name=".ReadActivity"></activity>
+        <activity android:name=".EditAccountActivity" />
         <activity android:name=".CommentActivity" />
         <activity android:name=".SynopsisActivity" />
         <activity android:name=".UserInfoActivity" />

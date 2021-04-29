@@ -27,7 +27,9 @@
             android:layout_height="wrap_content"
             android:text="Review"
             android:textColor="@color/black"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textSize="20sp"/>
 
     </com.google.android.material.appbar.MaterialToolbar>
 

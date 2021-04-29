@@ -2,6 +2,7 @@ package com.mobile.cyoa;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -39,6 +40,7 @@ public class EditAccountActivity extends AppCompatActivity {
     }
 
     private void init() {
+        preferences = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
         etFirst = findViewById(R.id.etFirstNameProf);
         etLast = findViewById(R.id.etLastNameProf);
         etEmail = findViewById(R.id.etEmailProf);
@@ -46,6 +48,9 @@ public class EditAccountActivity extends AppCompatActivity {
         imgEdProf = findViewById(R.id.imgUserDetail);
         getUser();
         editUser();
+        btnSaveEdit.setOnClickListener(v ->
+            startActivity(new Intent(EditAccountActivity.this, HomeActivity.class))
+        );
     }
 
     private void getUser() {
@@ -64,11 +69,11 @@ public class EditAccountActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-        },error -> {
-            error.printStackTrace();
-        }){
+        },error ->
+            error.printStackTrace()
+        ){
             @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
+            public Map<String, String> getHeaders(){
                 String token = preferences.getString("token", "");
                 HashMap<String, String> map = new HashMap<>();
                 map.put("Authorization", "Bearer "+token);
@@ -80,13 +85,6 @@ public class EditAccountActivity extends AppCompatActivity {
     }
 
     private void editUser() {
-        btnSaveEdit.setOnClickListener(v -> {
-            //POST JSON
-            //Update JSON
 
-
-            //back to profile
-            startActivity(new Intent(EditAccountActivity.this, AccountFragment.class));
-        });
     }
 }
