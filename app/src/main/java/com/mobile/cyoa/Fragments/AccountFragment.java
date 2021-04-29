@@ -46,6 +46,7 @@ public class AccountFragment extends Fragment {
     private CircleImageView imgProf;
     private SharedPreferences preferences;
     private Button btnLogout;
+    private String imgUrl = "" ;
 
 
     public AccountFragment (){
@@ -84,7 +85,8 @@ public class AccountFragment extends Fragment {
         });
 
         btnEdit.setOnClickListener(v -> {
-            startActivity(new Intent((getContext()), EditAccountActivity.class));
+            Intent i = new Intent((getContext()), EditAccountActivity.class);
+            i.putExtra("imgUrl",imgUrl);
             ((HomeActivity)getContext()).finish();
         });
 
@@ -101,6 +103,7 @@ public class AccountFragment extends Fragment {
                     txtLast.setText(user.getString("lastname"));
                     txtEmail.setText(user.getString("email"));
                     Picasso.get().load(Constant.URL+"storage/profiles/"+user.getString("photo")).into(imgProf);
+                    imgUrl = Constant.URL+"storage/profiles/"+user.getString("photo");
                 }
 
             } catch (JSONException e) {

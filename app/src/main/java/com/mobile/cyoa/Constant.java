@@ -8,6 +8,7 @@ public class Constant {
     public static final String USER = HOME+"/user";
     public static final String REGISTER = HOME+"/register";
     public static final String SAVE_USER_INFO = HOME+"/save_user_info";
+    public static final String UPDATE_USER_INFO = HOME+"/update";
     public static final String BOOKS = HOME+"/books";
     public static final String COMMENTS = BOOKS+"/comments";
     public static final String CREATE_COMMENTS = HOME+"/comments/create";
