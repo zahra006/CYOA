@@ -15,12 +15,30 @@ public class ReadActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_read);
+        init();
+    }
 
+    private void init() {
         btnSaveState = findViewById(R.id.btnReadSavestate);
         btnSynopsis = findViewById(R.id.btnReadSynopsis);
         btnOptionA = findViewById(R.id.btnOptionA);
         btnOptionB = findViewById(R.id.btnOptionB);
         text = findViewById(R.id.txtStory);
 
+        btnSaveState.setOnClickListener(v -> {
+
+        });
+
+        btnSynopsis.setOnClickListener(v -> {
+
+        });
+
+        btnOptionA.setOnClickListener(v -> {
+
+        });
+
+        btnOptionB.setOnClickListener(v -> {
+
+        });
     }
 }
