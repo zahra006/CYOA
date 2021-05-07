@@ -13,6 +13,9 @@ public class Constant {
     public static final String COMMENTS = BOOKS+"/comments";
     public static final String CREATE_COMMENTS = HOME+"/comments/create";
     public static final String DELETE_COMMENTS = HOME+"/comments/delete";
+    public static final String CONTENTS = HOME+"/contents";
+
+
 
 
 }

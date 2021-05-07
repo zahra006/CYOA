@@ -42,7 +42,10 @@ public class SynopsisActivity extends AppCompatActivity {
         Picasso.get().load(Constant.URL+"storage/covers/"+cover).into(imgSyn);
 
         btnRead.setOnClickListener(v -> {
-
+            Intent i = new Intent(SynopsisActivity.this,ReadActivity.class);
+            i.putExtra("bookId",book_id);
+            i.putExtra("bookPosition",book_position);
+            startActivity(i);
         });
 
         btnComment.setOnClickListener(v -> {

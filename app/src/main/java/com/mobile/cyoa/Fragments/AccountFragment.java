@@ -85,9 +85,9 @@ public class AccountFragment extends Fragment {
         });
 
         btnEdit.setOnClickListener(v -> {
-            Intent i = new Intent((getContext()), EditAccountActivity.class);
+            Intent i = new Intent((HomeActivity)getContext(), EditAccountActivity.class);
             i.putExtra("imgUrl",imgUrl);
-            ((HomeActivity)getContext()).finish();
+            startActivity(i);
         });
 
 
