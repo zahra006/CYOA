@@ -84,7 +84,7 @@ public class ReadActivity extends AppCompatActivity {
                     for (int i = 0; i < contents.length(); i++) {
                         JSONObject content = contents.getJSONObject(i);
                         if(bookId==content.getInt("book_id")){
-                            if(i==3){
+                            if(i==0){
                                 text.setText(content.getString("content"));
                             }
 
