@@ -158,6 +158,7 @@ public class RegisterFragment extends Fragment {
                     editor.putString("token",object.getString("token"));
                     editor.putString("name",user.getString("name"));
                     editor.putString("lastname",user.getString("lastname"));
+                    editor.putString("email",user.getString("email"));
                     editor.putString("photo",user.getString("photo"));
                     editor.putBoolean("isLoggedIn",true);
                     editor.apply();
@@ -166,7 +167,9 @@ public class RegisterFragment extends Fragment {
                     startActivity(new Intent(((AuthActivity)getContext()), UserInfoActivity.class));
                     ((AuthActivity) getContext()).finish();
                     Toast.makeText(getContext(),"Daftar Berhasil",Toast.LENGTH_SHORT).show();
-
+                }
+                else {
+                    Toast.makeText(getContext(),"Gagal Register",Toast.LENGTH_SHORT).show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

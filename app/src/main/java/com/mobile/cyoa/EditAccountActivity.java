@@ -15,6 +15,7 @@ import android.provider.MediaStore;
 import android.util.Base64;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -22,6 +23,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -89,6 +93,21 @@ public class EditAccountActivity extends AppCompatActivity {
         dialog.setMessage("Memperbarui...");
         dialog.show();
         StringRequest request = new StringRequest(Request.Method.POST,Constant.UPDATE_USER_INFO,response -> {
+            try {
+                JSONObject object = new JSONObject(response);
+                if (object.getBoolean("success")){
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("name",etFirst.getText().toString().trim());
+                    editor.putString("lastname",etLast.getText().toString().trim());
+                    editor.putString("email",etEmail.getText().toString().trim());
+                    editor.apply();
+                    Toast.makeText(this,"Profil berhasil diperbarui",Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            dialog.dismiss();
 
         },error->{
             error.printStackTrace();

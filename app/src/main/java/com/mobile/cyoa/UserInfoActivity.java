@@ -73,11 +73,7 @@ public class UserInfoActivity extends AppCompatActivity {
         });
 
         btnBerikut.setOnClickListener(v -> {
-            //validasi field input
-            if (validate()){
                 saveUserInfo();
-
-            }
         });
 
 
@@ -104,7 +100,6 @@ public class UserInfoActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
             dialog.dismiss();
 
         }, error -> {
